@@ -252,5 +252,52 @@ document.addEventListener('DOMContentLoaded', function() {
             boardObserver.observe(group);
         });
     }
+
+    // Apply page content animations
+    const applyContentItems = document.querySelectorAll('.apply-content-item');
+    if (applyContentItems.length > 0) {
+        // Set initial state
+        applyContentItems.forEach((item) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+        });
+
+        // Trigger animations with staggered delays when section is visible
+        const applyHero = document.querySelector('.apply-hero');
+        if (applyHero) {
+            const triggerAnimations = () => {
+                applyContentItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                        item.classList.add('animate-in');
+                    }, index * 200); // Stagger by 200ms
+                });
+            };
+
+            // Use IntersectionObserver to trigger when hero section is visible
+            const applyObserverOptions = {
+                threshold: 0.1,
+                rootMargin: '0px'
+            };
+
+            const applyObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        triggerAnimations();
+                        applyObserver.unobserve(entry.target);
+                    }
+                });
+            }, applyObserverOptions);
+
+            applyObserver.observe(applyHero);
+            
+            // Also trigger immediately if section is already visible (for fast page loads)
+            if (applyHero.getBoundingClientRect().top < window.innerHeight) {
+                setTimeout(triggerAnimations, 300);
+            }
+        }
+    }
 });
 
