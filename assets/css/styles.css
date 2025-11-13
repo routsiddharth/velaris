@@ -261,6 +261,21 @@ a {
     position: relative;
 }
 
+/* Center hero vertically on main page when navbar is hidden */
+.main-page .hero {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100vh;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.main-page .hero .container {
+    margin: 0 auto;
+}
+
 .hero .container {
     opacity: 0;
     transform: translateY(30px);
@@ -1444,6 +1459,10 @@ a {
 
     .hero {
         padding: 5rem 0 4rem;
+    }
+
+    .main-page .hero {
+        padding: 0 !important;
     }
 
     .footer-content {

@@ -58,16 +58,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let lastScroll = 0;
     const navbar = document.querySelector('.navbar');
     const isMainPage = document.body.classList.contains('main-page');
+    let navbarShown = false; // Track if navbar has been shown
 
     window.addEventListener('scroll', function() {
         const currentScroll = window.pageYOffset;
 
-        // Main page: show navbar when scrolling down
+        // Main page: show navbar when scrolling down, then keep it visible
         if (isMainPage) {
-            if (currentScroll > 100) {
+            if (currentScroll > 100 && !navbarShown) {
                 navbar.classList.add('navbar-visible');
-            } else {
-                navbar.classList.remove('navbar-visible');
+                navbarShown = true; // Once shown, it stays visible
             }
         }
 
