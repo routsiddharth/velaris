@@ -57,10 +57,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Navbar scroll effect
     let lastScroll = 0;
     const navbar = document.querySelector('.navbar');
+    const isMainPage = document.body.classList.contains('main-page');
 
     window.addEventListener('scroll', function() {
         const currentScroll = window.pageYOffset;
 
+        // Main page: show navbar when scrolling down
+        if (isMainPage) {
+            if (currentScroll > 100) {
+                navbar.classList.add('navbar-visible');
+            } else {
+                navbar.classList.remove('navbar-visible');
+            }
+        }
+
+        // Update box shadow based on scroll position
         if (currentScroll <= 0) {
             navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
         } else {

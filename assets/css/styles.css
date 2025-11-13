@@ -120,6 +120,19 @@ a {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hide navbar initially on main page */
+.main-page .navbar {
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Show navbar when scrolled on main page */
+.main-page .navbar.navbar-visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
 .nav-wrapper {
     display: flex;
     justify-content: space-between;
