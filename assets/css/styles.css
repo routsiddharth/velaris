@@ -789,29 +789,63 @@ a {
     padding: 5rem 0 2rem;
     background: transparent;
     color: var(--white);
-    text-align: center;
+}
+
+.apply-content-wrapper {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.apply-text-content {
+    flex: 1;
+    text-align: left;
 }
 
 .apply-title {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .apply-subtitle {
-    max-width: 720px;
-    margin: 0 auto 1rem;
+    max-width: none;
+    margin: 0 0 1rem 0;
     color: rgba(255, 255, 255, 0.9);
 }
 
+.apply-image-wrapper {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.apply-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    display: block;
+}
+
 .apply-notice {
-    max-width: 720px;
-    margin: 5rem auto 2.5rem;
+    margin: 2.5rem 0 0 0;
     color: rgba(255, 255, 255, 0.9);
     font-size: 1.1rem;
+    text-align: left;
 }
 
 .apply-notice strong {
     font-weight: 600;
     color: var(--white);
+}
+
+.apply-notice-mobile {
+    display: none;
 }
 
 .apply-content-item {
@@ -1475,6 +1509,41 @@ a {
         max-width: 320px;
         height: 120px;
     }
+
+    .apply-content-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .apply-text-content {
+        text-align: center;
+        order: 1;
+    }
+
+    .apply-title {
+        margin-bottom: 1.5rem;
+    }
+
+    .apply-notice-desktop {
+        display: none;
+    }
+
+    .apply-image-wrapper {
+        max-width: 100%;
+        order: 2;
+    }
+
+    .apply-image {
+        max-height: 300px;
+    }
+
+    .apply-notice-mobile {
+        display: block;
+        order: 3;
+        text-align: center;
+        margin: 0;
+    }
 }
 
 @media (max-width: 968px) {
@@ -1498,6 +1567,33 @@ a {
     .chapter-card {
         width: 260px;
         height: 130px;
+    }
+
+    .apply-content-wrapper {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .apply-text-content {
+        text-align: center;
+        order: 1;
+    }
+
+    .apply-notice-desktop {
+        display: none;
+    }
+
+    .apply-image-wrapper {
+        max-width: 100%;
+        margin: 0 auto;
+        order: 2;
+    }
+
+    .apply-notice-mobile {
+        display: block;
+        order: 3;
+        text-align: center;
+        margin: 0;
     }
 }
 
