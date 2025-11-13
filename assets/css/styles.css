@@ -814,7 +814,7 @@ a {
 
 /* Apply Page */
 .apply-hero {
-    padding: 5rem 0 2rem;
+    padding: 5rem 0 5rem;
     background: transparent;
     color: var(--white);
 }
@@ -864,7 +864,7 @@ a {
     margin: 2.5rem 0 0 0;
     color: rgba(255, 255, 255, 0.9);
     font-size: 1.1rem;
-    text-align: left;
+    text-align: center;
 }
 
 .apply-notice strong {
