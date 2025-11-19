@@ -308,7 +308,7 @@ a {
     margin-top: 2rem;
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 1s ease 1s forwards;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scroll-indicator {
@@ -1318,6 +1318,12 @@ a {
 .footer-brand p {
     color: var(--gray-300);
     line-height: 1.8;
+}
+
+.footer-disclaimer {
+    font-size: calc(1rem - 2px);
+    color: var(--gray-600);
+    margin-top: 10px;
 }
 
 .footer-links {

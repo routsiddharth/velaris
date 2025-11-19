@@ -59,15 +59,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const navbar = document.querySelector('.navbar');
     const isMainPage = document.body.classList.contains('main-page');
     let navbarShown = false; // Track if navbar has been shown
+    const heroButtons = document.querySelector('.hero-buttons');
+    let heroButtonsAnimated = false;
+    
+    // Ensure hero buttons start hidden
+    if (heroButtons && isMainPage) {
+        heroButtons.style.opacity = '0';
+        heroButtons.style.transform = 'translateY(20px)';
+        // Ensure transition is set for smooth animation
+        heroButtons.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    }
 
-    window.addEventListener('scroll', function() {
-        const currentScroll = window.pageYOffset;
+    const animateHeroButtons = function() {
+        if (!heroButtonsAnimated && heroButtons) {
+            heroButtons.style.opacity = '1';
+            heroButtons.style.transform = 'translateY(0)';
+            heroButtons.classList.add('animate-in');
+            heroButtonsAnimated = true;
+        }
+    };
+
+    const handleScroll = function() {
+        const currentScroll = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
 
         // Main page: show navbar when scrolling down, then keep it visible
         if (isMainPage) {
-            if (currentScroll > 100 && !navbarShown) {
+            if (currentScroll > 0 && !navbarShown) {
                 navbar.classList.add('navbar-visible');
                 navbarShown = true; // Once shown, it stays visible
+            }
+            
+            // Animate hero buttons on scroll (immediately when scrolling)
+            if (currentScroll > 0 && !heroButtonsAnimated && heroButtons) {
+                animateHeroButtons();
             }
         }
 
@@ -79,7 +103,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         lastScroll = currentScroll;
-    });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    // Check initial scroll position - if already scrolled, sync with hero title/subtitle animations
+    if (isMainPage && heroButtons) {
+        const initialScroll = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
+        if (initialScroll > 0) {
+            // Page is already scrolled - animate buttons with delay to sync with subtitle (starts at 0.8s)
+            // Use 1s delay to match subtitle animation timing
+            setTimeout(animateHeroButtons, 1000);
+        }
+    }
 
     // Intersection Observer for fade-in animations
     const observerOptions = {
@@ -124,6 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
         observer.observe(card);
     });
+
 
     // Card hover effects
     cards.forEach(card => {
