@@ -29,6 +29,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!isClickInsideNav && navMenu.classList.contains('active')) {
             navMenu.classList.remove('active');
             mobileMenuToggle.classList.remove('active');
+            // Reset hamburger icon animation
+            const spans = mobileMenuToggle.querySelectorAll('span');
+            spans.forEach(span => {
+                span.style.transform = '';
+                span.style.opacity = '';
+            });
         }
     });
 
