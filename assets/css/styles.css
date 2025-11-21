@@ -209,10 +209,12 @@ a {
 .dropdown a {
     display: block;
     padding: 0.5rem 1.5rem;
+    color: var(--primary-color);
 }
 
 .dropdown a:hover {
     background: var(--gray-100);
+    color: var(--primary-color);
 }
 
 .btn-apply {
@@ -284,9 +286,27 @@ a {
 
 .hero-title {
     margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.hero-word {
+    display: inline-block;
     opacity: 0;
     transform: translateY(20px);
+}
+
+.hero-word:nth-child(1) {
     animation: fadeInUp 1s ease 0.6s forwards;
+}
+
+.hero-word:nth-child(2) {
+    animation: fadeInUp 1s ease 0.75s forwards;
+}
+
+.hero-word:nth-child(3) {
+    animation: fadeInUp 1s ease 0.9s forwards;
 }
 
 .hero-subtitle {
@@ -1324,6 +1344,13 @@ a {
     margin-bottom: 3rem;
 }
 
+.footer-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    justify-content: flex-end;
+}
+
 .footer-brand h3 {
     margin-bottom: 1rem;
 }
@@ -1339,20 +1366,10 @@ a {
     margin-top: 10px;
 }
 
-.footer-links {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-
 .footer-column h4 {
     margin-bottom: 1rem;
-    margin-top: 2rem;
-    color: var(--white);
-}
-
-.footer-column h4:first-child {
     margin-top: 0;
+    color: var(--white);
 }
 
 .footer-column ul {
@@ -1532,7 +1549,8 @@ a {
     }
 
     .footer-links {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
     }
 
     .board-members-grid {
