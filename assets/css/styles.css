@@ -289,6 +289,7 @@ a {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    justify-content: center;
 }
 
 .hero-word {
@@ -1093,6 +1094,101 @@ a {
 }
 
 .chapter-card {
+    background: transparent;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 140px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1);
+    transform-origin: center center;
+    will-change: transform;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+    overflow: visible;
+}
+
+.chapter-logo {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    min-height: 80px;
+    object-fit: contain;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chapter-logo-default {
+    opacity: 1;
+}
+
+.chapter-logo-hover {
+    opacity: 0;
+}
+
+.chapter-card:first-child .chapter-logo {
+    max-width: 80%;
+    max-height: 100%;
+    min-height: 80px;
+    width: 80%;
+}
+
+.chapter-card:hover {
+    background: var(--white);
+    padding: 1.5rem;
+    transform: scale(1.1) !important;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3), 0 0 50px rgba(255, 255, 255, 0.15) !important;
+    z-index: 10;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+
+.chapter-card:hover .chapter-logo-default {
+    opacity: 0;
+}
+
+.chapter-card:hover .chapter-logo-hover {
+    opacity: 1;
+}
+
+/* Sponsors Section */
+.sponsors-section {
+    padding: 6rem 0;
+    background: transparent;
+    text-align: center;
+    color: var(--white);
+}
+
+.sponsors-section h2 {
+    color: var(--white);
+    margin-bottom: 3rem;
+}
+
+.sponsors-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.sponsor-card {
     background: var(--white);
     padding: 1rem;
     border-radius: var(--border-radius);
@@ -1115,7 +1211,7 @@ a {
     overflow: hidden;
 }
 
-.chapter-logo {
+.sponsor-logo {
     max-width: 100%;
     max-height: 100%;
     width: auto;
@@ -1125,13 +1221,7 @@ a {
     display: block;
 }
 
-.chapter-card:first-child .chapter-logo {
-    max-width: 110%;
-    max-height: 110%;
-    min-height: 90px;
-}
-
-.chapter-card:hover {
+.sponsor-card:hover {
     transform: scale(1.1) !important;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.3), 0 0 50px rgba(255, 255, 255, 0.15) !important;
     z-index: 10;
@@ -1303,32 +1393,6 @@ a {
     text-align: center;
 }
 
-.sponsors-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.sponsor-card {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    text-align: center;
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--white);
-    transition: var(--transition);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    transform: translateY(0);
-}
-
-.sponsor-card:hover {
-    border-color: var(--highlight-color);
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
 
 /* Footer */
 .footer {
@@ -1586,6 +1650,12 @@ a {
         max-width: 320px;
         height: 120px;
     }
+    
+    .sponsor-card {
+        width: 100%;
+        max-width: 320px;
+        height: 120px;
+    }
 
     .apply-content-wrapper {
         flex-direction: column;
@@ -1642,6 +1712,11 @@ a {
     }
     
     .chapter-card {
+        width: 260px;
+        height: 130px;
+    }
+    
+    .sponsor-card {
         width: 260px;
         height: 130px;
     }
